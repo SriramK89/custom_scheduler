@@ -1,0 +1,19 @@
+p#notice= notice
+p
+  strong Repeat unit:
+  = SchedulerConstants::RepeatUnit::ALL.invert[@scheduler.repeat_unit].titlecase
+p
+  strong Repeat number:
+  = @scheduler.repeat_number
+p
+  strong Fixed datetime:
+  = @scheduler.fixed_datetime
+p
+  strong Last run at:
+  = get_datetime @scheduler.last_run_at
+p
+  strong Number of runs:
+  = @scheduler.number_of_runs
+= link_to 'Edit', edit_scheduler_path(@scheduler)
+| \
+= link_to 'Back', schedulers_path

@@ -1,0 +1,32 @@
+= form_for(scheduler) do |f|
+  - if scheduler.errors.any?
+    #error_explanation
+      h2
+        = pluralize(scheduler.errors.count, "error")
+        | prohibited this scheduler from being saved:
+      ul
+        - scheduler.errors.full_messages.each do |message|
+          li= message
+  .field
+    = f.label :repeat_unit
+    = f.select :repeat_unit, options_for_select(get_repeat_unit_options, scheduler.repeat_unit)
+  .field#repeatNum data-selected-unit=scheduler.repeat_unit data-selected-number=scheduler.repeat_number
+    = f.label :repeat_number
+    = f.select :repeat_number, options_for_select(  \
+      get_repeat_num_options(scheduler.repeat_unit),\
+      scheduler.repeat_number)
+  .field#fixedDatetime data-fixed-datetime=scheduler.fixed_datetime
+    = f.label :fixed_datetime
+    = select_tag :year, options_for_select(get_fix_time_options :year, scheduler.fixed_datetime), id: :fixedYear
+    = select_tag :month, options_for_select(get_fix_time_options :month, scheduler.fixed_datetime), id: :fixedMonth
+    = select_tag :day, options_for_select(get_fix_time_options :day, scheduler.fixed_datetime), id: :fixedDay
+    = " - "
+    = select_tag :hour, options_for_select(get_fix_time_options :hour, scheduler.fixed_datetime), id: :fixedHour
+    = " : "
+    = select_tag :minute, options_for_select(get_fix_time_options :minute, scheduler.fixed_datetime), id: :fixedMinute
+  .help-text
+    strong Meaning: &nbsp;
+    span#helpText
+    span#testArea
+  .actions
+    = f.submit

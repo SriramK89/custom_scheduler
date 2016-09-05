@@ -1,0 +1,32 @@
+// Place all the styles related to the Schedulers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background-color: #1E4507;
+}
+
+.container {
+  width: 75%;
+  background-color: #E4F5DA;
+  padding-left: 25px;
+  padding-bottom: 25px;
+  border-radius: 10px;
+}
+
+.help-text {
+  color: #5C5C5C;
+}
+
+td, th {
+  padding: 5px;
+}
+
+.center, th {
+  text-align: center;
+}
+
+table {
+  border-spacing: 3px;
+  border-collapse: separate;
+}
